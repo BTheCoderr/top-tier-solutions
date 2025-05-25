@@ -115,6 +115,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/services">Services</NavLink>
         <NavLink to="/gallery">Gallery</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/service-area">Service Area</NavLink>
+        <NavLink to="/book">Book Now</NavLink>
         <ContactButton to="/contact">Contact Us</ContactButton>
       </NavLinks>
 
@@ -122,6 +125,9 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/services">Services</NavLink>
         <NavLink to="/gallery">Gallery</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/service-area">Service Area</NavLink>
+        <NavLink to="/book">Book Now</NavLink>
         <ContactButton to="/contact">Contact Us</ContactButton>
       </MobileMenu>
     </Nav>
