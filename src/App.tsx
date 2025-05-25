@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import styled from 'styled-components';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Services from './components/Services';
+import Gallery from './components/Gallery';
+import Testimonials from './components/Testimonials';
+import Credentials from './components/Credentials';
+import Contact from './components/Contact';
 
-function App() {
+const AppContainer = styled.div`
+  min-height: 100vh;
+`;
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AppContainer>
+        <Navbar />
+        <Hero />
+        <Services />
+        <Gallery />
+        <Testimonials />
+        <Credentials />
+        <Contact />
+      </AppContainer>
+    </Router>
   );
-}
+};
 
 export default App;
