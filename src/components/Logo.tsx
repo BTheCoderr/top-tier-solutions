@@ -10,24 +10,15 @@ const LogoContainer = styled(Link)`
 `;
 
 const LogoImage = styled.img`
-  height: 50px;
+  height: 70px;
   width: auto;
-  margin-right: 10px;
-`;
-
-const LogoSubtext = styled.span`
-  color: #FF5722;
-  font-size: 0.8rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  object-fit: contain;
 `;
 
 const Logo = () => {
   return (
     <LogoContainer to="/">
-      <LogoImage src={logo} alt="Top Tier Solutions Logo" />
-      <LogoSubtext>Fire Prevention & Clean Air</LogoSubtext>
+      <LogoImage src={logo} alt="Top Tier Solutions - Fire Prevention & Clean Air" />
     </LogoContainer>
   );
 };
