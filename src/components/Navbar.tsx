@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Logo from './Logo';
 
 const Nav = styled.nav`
   background-color: #212121;
@@ -13,6 +12,25 @@ const Nav = styled.nav`
   width: 100%;
   top: 0;
   z-index: 1000;
+`;
+
+const LogoContainer = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+`;
+
+const LogoText = styled.span`
+  color: #FF5722;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+`;
+
+const LogoSubtext = styled.span`
+  color: #FF5722;
+  font-size: 0.8rem;
+  text-transform: uppercase;
 `;
 
 const NavLinks = styled.div`
@@ -84,7 +102,10 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <Logo />
+      <LogoContainer to="/">
+        <LogoText>TTS</LogoText>
+        <LogoSubtext>Fire Prevention & Clean Air</LogoSubtext>
+      </LogoContainer>
       
       <MobileMenuButton onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
         ☰

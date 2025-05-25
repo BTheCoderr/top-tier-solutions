@@ -1,24 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const HeroContainer = styled.div`
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.7);
-  background-image: url('/hero-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-blend-mode: darken;
+  background-color: #212121;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
   margin-top: -80px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #FF5722 0%, #212121 100%);
+    opacity: 0.1;
+  }
 `;
 
 const HeroContent = styled.div`
   text-align: center;
   color: white;
   max-width: 800px;
+  position: relative;
+  z-index: 1;
 `;
 
 const MainHeadline = styled.h1`
@@ -69,6 +81,8 @@ const CTAButton = styled.button`
 `;
 
 const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <HeroContainer>
       <HeroContent>
@@ -81,7 +95,7 @@ const Hero = () => {
         <SubHeadline>
           FREE INSPECTIONS & ESTIMATES
         </SubHeadline>
-        <CTAButton onClick={() => window.location.href = '/contact'}>
+        <CTAButton onClick={() => navigate('/contact')}>
           Get Your Free Estimate
         </CTAButton>
       </HeroContent>
@@ -89,4 +103,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;

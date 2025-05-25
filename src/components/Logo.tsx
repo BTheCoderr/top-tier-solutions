@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import logo from '../assets/tts-logo.png';
 
 const LogoContainer = styled(Link)`
   display: flex;
@@ -25,7 +26,7 @@ const LogoSubtext = styled.span`
 const Logo = () => {
   return (
     <LogoContainer to="/">
-      <LogoImage src="/images/tts-logo.png" alt="Top Tier Solutions Logo" />
+      <LogoImage src={logo} alt="Top Tier Solutions Logo" />
       <LogoSubtext>Fire Prevention & Clean Air</LogoSubtext>
     </LogoContainer>
   );

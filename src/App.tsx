@@ -1,12 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import Gallery from './components/Gallery';
-import Testimonials from './components/Testimonials';
-import Credentials from './components/Credentials';
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import GalleryPage from './pages/GalleryPage';
 import Contact from './components/Contact';
 
 const AppContainer = styled.div`
@@ -18,12 +16,12 @@ const App = () => {
     <Router>
       <AppContainer>
         <Navbar />
-        <Hero />
-        <Services />
-        <Gallery />
-        <Testimonials />
-        <Credentials />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
       </AppContainer>
     </Router>
   );

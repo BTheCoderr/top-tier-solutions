@@ -90,34 +90,49 @@ const ImageDescription = styled.p`
   line-height: 1.4;
 `;
 
-// Placeholder data - replace with actual images and descriptions
+// Updated gallery items with placeholder images
 const galleryItems = {
   hood: [
     {
-      before: '/images/hood-before-1.jpg',
-      after: '/images/hood-after-1.jpg',
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Hood+Before',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Hood+After',
       title: 'Restaurant Hood Cleaning',
       description: 'Complete hood system cleaning for fire prevention'
     },
-    // Add more hood cleaning examples
+    {
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Hood+Before+2',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Hood+After+2',
+      title: 'Commercial Kitchen Hood',
+      description: 'Deep cleaning of commercial kitchen hood system'
+    }
   ],
   vent: [
     {
-      before: '/images/vent-before-1.jpg',
-      after: '/images/vent-after-1.jpg',
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Vent+Before',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Vent+After',
       title: 'Air Vent Cleaning',
       description: 'Thorough cleaning of ventilation system'
     },
-    // Add more vent cleaning examples
+    {
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Vent+Before+2',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Vent+After+2',
+      title: 'HVAC Vent Maintenance',
+      description: 'Professional HVAC system cleaning'
+    }
   ],
   dryer: [
     {
-      before: '/images/dryer-before-1.jpg',
-      after: '/images/dryer-after-1.jpg',
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Dryer+Before',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Dryer+After',
       title: 'Dryer Vent Cleaning',
       description: 'Professional dryer vent maintenance'
     },
-    // Add more dryer vent cleaning examples
+    {
+      before: 'https://placehold.co/600x400/212121/FF5722/png?text=Dryer+Before+2',
+      after: 'https://placehold.co/600x400/212121/FF5722/png?text=Dryer+After+2',
+      title: 'Commercial Dryer Vents',
+      description: 'Commercial laundry vent cleaning'
+    }
   ]
 };
 
