@@ -78,7 +78,7 @@ const Credentials = () => {
 
         <CredentialsGrid>
           <CredentialCard>
-            <Icon>🏆</Icon>
+            <Icon>Award</Icon>
             <Title>Certified Excellence</Title>
             <Description>
               CECS - Certified Exhaust Cleaning Specialist<br/>
@@ -89,7 +89,7 @@ const Credentials = () => {
           </CredentialCard>
 
           <CredentialCard>
-            <Icon>📋</Icon>
+            <Icon>Compliance</Icon>
             <Title>Code Compliance</Title>
             <Description>
               We meet and exceed all local Fire Codes and NFPA96 Standards to ensure your safety and compliance.

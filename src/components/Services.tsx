@@ -77,52 +77,52 @@ const services = [
   },
   {
     title: "Hood Inspections",
-    icon: "🔍",
+    icon: "Inspect",
     description: "Thorough inspection of hood systems to ensure safety and compliance"
   },
   {
     title: "Full Hood Exhaust Cleaning",
-    icon: "🧹",
+    icon: "Clean",
     description: "Complete cleaning of hood exhaust systems to prevent fire hazards"
   },
   {
     title: "Grease Traps",
-    icon: "🔧",
+    icon: "Repair",
     description: "Professional cleaning and maintenance of grease traps"
   },
   {
     title: "Equipment Cleaning",
-    icon: "⚙️",
+    icon: "Equipment",
     description: "Detailed cleaning of kitchen equipment for optimal performance"
   },
   {
     title: "Filter Cleaning",
-    icon: "🔄",
+    icon: "Filter",
     description: "Thorough cleaning of filters to maintain air quality"
   },
   {
     title: "Return Air Cleaning",
-    icon: "💨",
+    icon: "Air",
     description: "Cleaning of return air systems for better ventilation"
   },
   {
     title: "Fan Belt Exchange",
-    icon: "🔧",
+    icon: "Belt",
     description: "Professional replacement of fan belts"
   },
   {
     title: "Air Ventilation Cleaning",
-    icon: "🌪️",
+    icon: "Vent",
     description: "Comprehensive cleaning of air ventilation systems"
   },
   {
     title: "Laundry Duct Cleaning",
-    icon: "👕",
+    icon: "Laundry",
     description: "Specialized cleaning for laundry ducts and vents"
   },
   {
     title: "24/7 Emergency Service",
-    icon: "🚨",
+    icon: "Emergency",
     description: "Round-the-clock emergency service for urgent needs"
   }
 ];
