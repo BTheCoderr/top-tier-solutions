@@ -92,11 +92,11 @@ const MobileMenuButton = styled.button`
   }
 `;
 
-const MobileMenu = styled.div<{ isOpen: boolean }>`
+const MobileMenu = styled.div<{ $isOpen: boolean }>`
   display: none;
   
   @media (max-width: 768px) {
-    display: ${props => props.isOpen ? 'flex' : 'none'};
+    display: ${props => props.$isOpen ? 'flex' : 'none'};
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -146,7 +146,7 @@ const Navbar = () => {
         <ContactButton to="/contact">Contact Us</ContactButton>
       </NavLinks>
 
-      <MobileMenu isOpen={isMobileMenuOpen}>
+      <MobileMenu $isOpen={isMobileMenuOpen}>
         <NavLink to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</NavLink>
         <NavLink to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</NavLink>
         <NavLink to="/gallery" onClick={() => setIsMobileMenuOpen(false)}>Gallery</NavLink>

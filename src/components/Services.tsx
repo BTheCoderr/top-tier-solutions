@@ -52,6 +52,30 @@ const ServiceDescription = styled.p`
 
 const services = [
   {
+    id: 1,
+    title: "Commercial Hood Cleaning",
+    description: "Professional cleaning of restaurant kitchen exhaust systems, ensuring fire safety compliance and optimal performance.",
+    icon: "Service",
+    features: [
+      "Deep cleaning of exhaust fans",
+      "Grease removal from ductwork", 
+      "Filter cleaning and replacement",
+      "Fire safety compliance"
+    ]
+  },
+  {
+    id: 2,
+    title: "Air Vent Cleaning", 
+    description: "Comprehensive cleaning of HVAC systems to improve air quality and system efficiency.",
+    icon: "Cleaning",
+    features: [
+      "Ductwork cleaning",
+      "Air filter replacement",
+      "Improved air quality",
+      "Energy efficiency boost"
+    ]
+  },
+  {
     title: "Hood Inspections",
     icon: "🔍",
     description: "Thorough inspection of hood systems to ensure safety and compliance"

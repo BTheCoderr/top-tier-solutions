@@ -26,12 +26,12 @@ const FAQItem = styled.div`
   background-color: white;
 `;
 
-const Question = styled.button<{ isOpen: boolean }>`
+const Question = styled.button<{ $isOpen: boolean }>`
   width: 100%;
   padding: 1.5rem;
   text-align: left;
-  background-color: ${props => props.isOpen ? '#FF5722' : 'white'};
-  color: ${props => props.isOpen ? 'white' : '#212121'};
+  background-color: ${props => props.$isOpen ? '#FF5722' : 'white'};
+  color: ${props => props.$isOpen ? 'white' : '#212121'};
   border: none;
   cursor: pointer;
   display: flex;
@@ -42,21 +42,21 @@ const Question = styled.button<{ isOpen: boolean }>`
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: ${props => props.isOpen ? '#F4511E' : '#f5f5f5'};
+    background-color: ${props => props.$isOpen ? '#F4511E' : '#f5f5f5'};
   }
 `;
 
-const Answer = styled.div<{ isOpen: boolean }>`
-  padding: ${props => props.isOpen ? '1.5rem' : '0 1.5rem'};
-  max-height: ${props => props.isOpen ? '500px' : '0'};
+const Answer = styled.div<{ $isOpen: boolean }>`
+  padding: ${props => props.$isOpen ? '1.5rem' : '0 1.5rem'};
+  max-height: ${props => props.$isOpen ? '500px' : '0'};
   overflow: hidden;
   transition: all 0.3s ease;
   background-color: white;
   line-height: 1.6;
 `;
 
-const Icon = styled.span<{ isOpen: boolean }>`
-  transform: rotate(${props => props.isOpen ? '180deg' : '0'});
+const Icon = styled.span<{ $isOpen: boolean }>`
+  transform: rotate(${props => props.$isOpen ? '180deg' : '0'});
   transition: transform 0.3s ease;
 `;
 
@@ -97,13 +97,13 @@ const FAQ = () => {
         {faqData.map((item, index) => (
           <FAQItem key={index}>
             <Question
-              isOpen={openIndex === index}
+              $isOpen={openIndex === index}
               onClick={() => toggleQuestion(index)}
             >
               {item.question}
-              <Icon isOpen={openIndex === index}>▼</Icon>
+              <Icon $isOpen={openIndex === index}>▼</Icon>
             </Question>
-            <Answer isOpen={openIndex === index}>
+            <Answer $isOpen={openIndex === index}>
               {item.answer}
             </Answer>
           </FAQItem>

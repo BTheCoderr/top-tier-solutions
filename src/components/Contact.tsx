@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import emailjs from '@emailjs/browser';
 
 const ContactSection = styled.section`
   padding: 5rem 2rem;
@@ -176,21 +175,25 @@ const Contact = () => {
     setStatus({ type: null, message: '' });
 
     try {
-      // Replace these with your actual EmailJS credentials
-      const result = await emailjs.send(
-        'YOUR_SERVICE_ID',
-        'YOUR_TEMPLATE_ID',
-        {
-          from_name: formData.name,
-          reply_to: formData.email,
-          phone_number: formData.phone,
-          message: formData.message,
-          to_name: 'Top Tier Solutions'
-        },
-        'YOUR_PUBLIC_KEY'
-      );
+      const encode = (data: any) => {
+        return Object.keys(data)
+          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+          .join("&");
+      };
 
-      if (result.status === 200) {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "contact",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
         setStatus({
           type: 'success',
           message: 'Thank you for your message! We will get back to you soon.'
@@ -201,11 +204,14 @@ const Contact = () => {
           phone: '',
           message: ''
         });
+      } else {
+        throw new Error('Form submission failed');
       }
     } catch (error) {
+      console.error('Form submission error:', error);
       setStatus({
         type: 'error',
-        message: 'Sorry, something went wrong. Please try again later.'
+        message: 'Sorry, something went wrong. Please try again later or call us directly at 401-661-4217.'
       });
     } finally {
       setIsSubmitting(false);
@@ -219,20 +225,20 @@ const Contact = () => {
         <ContactInfo>
           <InfoTitle>Get in Touch</InfoTitle>
           <InfoItem>
-            <Icon>📍</Icon>
+            <Icon>Location</Icon>
             <InfoText>
               166 Valley St Bldg 6M suite 103<br />
               Providence, RI 02909
             </InfoText>
           </InfoItem>
           <InfoItem>
-            <Icon>📞</Icon>
+            <Icon>Phone</Icon>
             <InfoText>
               <a href="tel:401-661-4217">401-661-4217</a>
             </InfoText>
           </InfoItem>
           <InfoItem>
-            <Icon>✉️</Icon>
+            <Icon>Email</Icon>
             <InfoText>
               <a href="mailto:info@toptiersolutionsllc.net">
                 info@toptiersolutionsllc.net
@@ -240,7 +246,7 @@ const Contact = () => {
             </InfoText>
           </InfoItem>
           <InfoItem>
-            <Icon>🌐</Icon>
+            <Icon>Website</Icon>
             <InfoText>
               <a href="https://www.toptiersolutionsllc.net" target="_blank" rel="noopener noreferrer">
                 www.toptiersolutionsllc.net
@@ -249,7 +255,16 @@ const Contact = () => {
           </InfoItem>
         </ContactInfo>
 
-        <ContactForm onSubmit={handleSubmit}>
+        <ContactForm 
+          onSubmit={handleSubmit}
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          {/* Hidden field for Netlify Forms */}
+          <input type="hidden" name="form-name" value="contact" />
+          
           {status.type && (
             <div>
               {status.type === 'success' ? (

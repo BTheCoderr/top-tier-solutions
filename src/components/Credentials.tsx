@@ -81,7 +81,10 @@ const Credentials = () => {
             <Icon>🏆</Icon>
             <Title>Certified Excellence</Title>
             <Description>
-              Our team is certified and trained to handle all types of commercial kitchen exhaust cleaning and maintenance.
+              CECS - Certified Exhaust Cleaning Specialist<br/>
+              BCCS - Boston Certified Cleaning Specialist<br/>
+              OSHA 10<br/>
+              20 years of experience on our team
             </Description>
           </CredentialCard>
 
@@ -94,7 +97,7 @@ const Credentials = () => {
           </CredentialCard>
 
           <CredentialCard>
-            <Icon>✅</Icon>
+            <Icon>✓</Icon>
             <Title>Health Regulations</Title>
             <Description>
               Our services comply with all Health Department regulations, maintaining the highest standards of cleanliness.

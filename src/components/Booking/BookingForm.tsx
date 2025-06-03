@@ -30,13 +30,13 @@ const ServiceGrid = styled.div`
   margin-bottom: 2rem;
 `;
 
-const ServiceCard = styled.div<{ selected: boolean }>`
+const ServiceCard = styled.div<{ $selected: boolean }>`
   padding: 1.5rem;
-  border: 2px solid ${props => props.selected ? '#FF5722' : '#e0e0e0'};
+  border: 2px solid ${props => props.$selected ? '#FF5722' : '#e0e0e0'};
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: ${props => props.selected ? '#fff3f0' : 'white'};
+  background-color: ${props => props.$selected ? '#fff3f0' : 'white'};
 
   &:hover {
     border-color: #FF5722;
@@ -122,6 +122,24 @@ const SubmitButton = styled.button`
   }
 `;
 
+const SuccessMessage = styled.div`
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
+const SubmissionErrorMessage = styled.div`
+  color: #f44336;
+  background-color: rgba(244, 67, 54, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+
 const validationSchema = Yup.object().shape({
   service: Yup.string().required('Please select a service'),
   date: Yup.date().required('Please select a date').min(new Date(), 'Date cannot be in the past'),
@@ -137,6 +155,14 @@ const validationSchema = Yup.object().shape({
 
 const BookingForm = () => {
   const [selectedService, setSelectedService] = useState<string>('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({
+    type: null,
+    message: ''
+  });
 
   const initialValues: BookingFormData = {
     service: '',
@@ -153,9 +179,54 @@ const BookingForm = () => {
     notes: ''
   };
 
-  const handleSubmit = (values: BookingFormData) => {
-    console.log('Form submitted:', values);
-    // TODO: Implement form submission
+  const handleSubmit = async (values: BookingFormData) => {
+    setIsSubmitting(true);
+    setStatus({ type: null, message: '' });
+
+    // Find the selected service details
+    const selectedServiceDetails = services.find(s => s.id === values.service);
+    const serviceName = selectedServiceDetails ? selectedServiceDetails.name : 'Service';
+
+    try {
+      const encode = (data: any) => {
+        return Object.keys(data)
+          .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+          .join("&");
+      };
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: encode({
+          "form-name": "booking",
+          service: serviceName,
+          date: values.date.toDateString(),
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phone: values.phone,
+          address: `${values.address}, ${values.city}, ${values.state} ${values.zipCode}`,
+          notes: values.notes || 'No additional notes'
+        })
+      });
+
+      if (response.ok) {
+        setStatus({
+          type: 'success',
+          message: `Thank you ${values.firstName}! Your ${serviceName} booking request has been submitted. We will contact you soon to confirm the appointment.`
+        });
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatus({
+        type: 'error',
+        message: 'Sorry, something went wrong with your booking request. Please try again later or call us directly at 401-661-4217.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -166,14 +237,21 @@ const BookingForm = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched, setFieldValue }) => (
-          <Form>
+          <Form 
+            name="booking"
+            method="POST"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            {/* Hidden field for Netlify Forms */}
+            <input type="hidden" name="form-name" value="booking" />
             <StepContainer>
               <StepTitle>1. Select a Service</StepTitle>
               <ServiceGrid>
                 {services.map(service => (
                   <ServiceCard
                     key={service.id}
-                    selected={selectedService === service.id}
+                    $selected={selectedService === service.id}
                     onClick={() => {
                       setSelectedService(service.id);
                       setFieldValue('service', service.id);
@@ -282,7 +360,16 @@ const BookingForm = () => {
               </FormGroup>
             </StepContainer>
 
-            <SubmitButton type="submit">Book Service</SubmitButton>
+            <SubmitButton type="submit" disabled={isSubmitting}>
+              {isSubmitting ? 'Submitting...' : 'Book Service'}
+            </SubmitButton>
+
+            {status.type === 'success' && (
+              <SuccessMessage>{status.message}</SuccessMessage>
+            )}
+            {status.type === 'error' && (
+              <SubmissionErrorMessage>{status.message}</SubmissionErrorMessage>
+            )}
           </Form>
         )}
       </Formik>

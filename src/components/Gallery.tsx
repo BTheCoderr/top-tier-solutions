@@ -21,18 +21,18 @@ const CategoryTabs = styled.div`
   flex-wrap: wrap;
 `;
 
-const CategoryTab = styled.button<{ active: boolean }>`
+const CategoryTab = styled.button<{ $active: boolean }>`
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
-  background-color: ${props => props.active ? '#FF5722' : '#f5f5f5'};
-  color: ${props => props.active ? 'white' : '#212121'};
+  background-color: ${props => props.$active ? '#FF5722' : '#f5f5f5'};
+  color: ${props => props.$active ? 'white' : '#212121'};
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
 
   &:hover {
-    background-color: ${props => props.active ? '#F4511E' : '#e0e0e0'};
+    background-color: ${props => props.$active ? '#F4511E' : '#e0e0e0'};
   }
 `;
 
@@ -145,19 +145,19 @@ const Gallery = () => {
       
       <CategoryTabs>
         <CategoryTab 
-          active={activeCategory === 'hood'} 
+          $active={activeCategory === 'hood'} 
           onClick={() => setActiveCategory('hood')}
         >
           Hood Cleaning
         </CategoryTab>
         <CategoryTab 
-          active={activeCategory === 'vent'} 
+          $active={activeCategory === 'vent'} 
           onClick={() => setActiveCategory('vent')}
         >
           Air Vent Cleaning
         </CategoryTab>
         <CategoryTab 
-          active={activeCategory === 'dryer'} 
+          $active={activeCategory === 'dryer'} 
           onClick={() => setActiveCategory('dryer')}
         >
           Dryer Vent Cleaning

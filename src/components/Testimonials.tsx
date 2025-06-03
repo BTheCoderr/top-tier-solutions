@@ -84,21 +84,21 @@ const Rating = styled.div`
 // Sample testimonials data - replace with real testimonials
 const testimonials = [
   {
-    quote: "Top Tier Solutions has been maintaining our restaurant's hood system for years. Their service is exceptional, and they always ensure we're up to code.",
-    author: "John Smith",
-    business: "Smith's Family Restaurant",
+    quote: "Top Tier Solutions has been maintaining our restaurant's hood system for this year. Their service is exceptional, and they always ensure we're up to code.",
+    author: "Kristin",
+    business: "LJ Kitchen",
     rating: 5
   },
   {
     quote: "Professional, reliable, and thorough. They've helped us maintain a clean and safe environment for our customers and staff.",
-    author: "Maria Rodriguez",
-    business: "La Casa Kitchen",
+    author: "Meek",
+    business: "GeeGee Southern Cuisine",
     rating: 5
   },
   {
     quote: "Their attention to detail and commitment to safety is unmatched. Highly recommend their services to any business owner.",
-    author: "David Chen",
-    business: "Asian Fusion Bistro",
+    author: "Ed",
+    business: "The Burrito Bowl",
     rating: 5
   }
 ];
